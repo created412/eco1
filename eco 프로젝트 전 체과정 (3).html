@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E.C.O. 프로젝트 학생 가이드</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&family=Black+Han+Sans&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #2d6a4f;
+    --green-light: #52b788;
+    --green-pale: #d8f3dc;
+    --blue: #1d3557;
+    --blue-light: #457b9d;
+    --blue-pale: #a8dadc;
+    --orange: #e76f51;
+    --orange-pale: #fde4d8;
+    --yellow: #f4a261;
+    --yellow-pale: #fef3e2;
+    --white: #ffffff;
+    --gray: #f8f9fa;
+    --dark: #1a1a2e;
+    --text: #2b2d42;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background: #f0f7f4;
+    color: var(--text);
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  /* 헤더 */
+  .hero {
+    background: linear-gradient(135deg, var(--green) 0%, var(--blue) 100%);
+    color: white;
+    padding: 50px 40px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: -40px;
+    width: 150px; height: 150px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+  }
+
+  .badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    border: 2px solid rgba(255,255,255,0.4);
+    border-radius: 50px;
+    padding: 8px 24px;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+  }
+
+  .hero h1 {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 52px;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    text-shadow: 2px 4px 12px rgba(0,0,0,0.3);
+  }
+
+  .hero h1 span {
+    color: #95d5b2;
+  }
+
+  .hero p {
+    font-size: 20px;
+    opacity: 0.9;
+    max-width: 700px;
+    margin: 0 auto 30px;
+  }
+
+  /* ECO 모형 소개 */
+  .eco-intro {
+    display: flex;
+    gap: 20px;
+    padding: 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .eco-card {
+    flex: 1;
+    border-radius: 20px;
+    padding: 30px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  }
+
+  .eco-card.e { background: linear-gradient(135deg, #2d6a4f, #52b788); color: white; }
+  .eco-card.c { background: linear-gradient(135deg, #1d3557, #457b9d); color: white; }
+  .eco-card.o { background: linear-gradient(135deg, #e76f51, #f4a261); color: white; }
+
+  .eco-card .letter {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 72px;
+    opacity: 0.3;
+    position: absolute;
+    top: -10px; right: 10px;
+    line-height: 1;
+  }
+
+  .eco-card .label {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    opacity: 0.85;
+    margin-bottom: 8px;
+  }
+
+  .eco-card h3 {
+    font-size: 26px;
+    font-weight: 900;
+    margin-bottom: 10px;
+  }
+
+  .eco-card p {
+    font-size: 16px;
+    opacity: 0.9;
+    line-height: 1.6;
+  }
+
+  .arrow-between {
+    display: flex;
+    align-items: center;
+    font-size: 36px;
+    color: var(--green);
+    font-weight: 900;
+    padding-top: 10px;
+  }
+
+  /* 섹션 공통 */
+  .section {
+    max-width: 1100px;
+    margin: 0 auto 50px;
+    padding: 0 40px;
+  }
+
+  .section-title {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 32px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-title .num {
+    background: var(--green);
+    color: white;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+
+  /* 흐름도 */
+  .flow-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .flow-row {
+    display: flex;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .flow-stage-label {
+    width: 100px;
+    flex-shrink: 0;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 8px;
+    font-weight: 900;
+    font-size: 18px;
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  .stage-e { background: var(--green); color: white; }
+  .stage-c { background: var(--blue); color: white; }
+  .stage-o { background: var(--orange); color: white; }
+
+  .flow-cards {
+    flex: 1;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .flow-card {
+    flex: 1;
+    min-width: 200px;
+    background: white;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border-top: 5px solid;
+    position: relative;
+  }
+
+  .flow-card.e-color { border-color: var(--green-light); }
+  .flow-card.c-color { border-color: var(--blue-light); }
+  .flow-card.o-color { border-color: var(--orange); }
+
+  .flow-card .chi {
+    font-size: 12px;
+    font-weight: 700;
+    color: #888;
+    margin-bottom: 4px;
+    letter-spacing: 1px;
+  }
+
+  .flow-card h4 {
+    font-size: 17px;
+    font-weight: 900;
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  .flow-card .subject-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 8px;
+  }
+
+  .tag-society { background: #e8f4f8; color: var(--blue); }
+  .tag-science { background: var(--green-pale); color: var(--green); }
+  .tag-both { background: #fef3e2; color: #c77800; }
+
+  .flow-card .tasks {
+    list-style: none;
+    font-size: 14px;
+    color: #444;
+    line-height: 1.8;
+  }
+
+  .flow-card .tasks li::before {
+    content: '▸ ';
+    color: #aaa;
+  }
+
+  /* 패들렛 업로드 강조 */
+  .padlet-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #fff3cd;
+    border: 2px solid #ffc107;
+    border-radius: 8px;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #856404;
+    margin-top: 8px;
+  }
+
+  /* 패들렛 업로드 총정리 */
+  .padlet-section {
+    background: linear-gradient(135deg, #fff8e1, #fffde7);
+    border: 3px solid #ffc107;
+    border-radius: 24px;
+    padding: 36px;
+    margin-bottom: 50px;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .padlet-title {
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 28px;
+    color: #856404;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .padlet-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+
+  .padlet-item {
+    background: white;
+    border-radius: 14px;
+    padding: 16px 18px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+
+  .padlet-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: #ffc107;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .padlet-item-text strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 900;
+    margin-bottom: 2px;
+  }
+
+  .padlet-item-text span {
+    font-size: 12px;
+    color: #666;
+    line-height: 1.5;
+  }
+
+  /* 최종 제안서 구조 */
+  .proposal-section {
+    max-width: 1100px;
+    margin: 0 auto 50px;
+    padding: 0 40px;
+  }
+
+  .proposal-box {
+    background: white;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+  }
+
+  .proposal-header {
+    background: linear-gradient(135deg, var(--green), var(--blue));
+    color: white;
+    padding: 28px 36px;
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 26px;
+  }
+
+  .proposal-body {
+    padding: 28px 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .proposal-part {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px 20px;
+    border-radius: 14px;
+    background: #f8f9fa;
+  }
+
+  .part-num {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    font-size: 18px;
+    flex-shrink: 0;
+    color: white;
+  }
+
+  .p1 { background: var(--blue); }
+  .p2 { background: var(--green); }
+  .p3 { background: #6c757d; }
+  .p4 { background: var(--yellow); }
+  .p5 { background: var(--orange); }
+
+  .part-content strong {
+    display: block;
+    font-size: 18px;
+    font-weight: 900;
+    margin-bottom: 4px;
+  }
+
+  .part-content span {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.6;
+  }
+
+  .part-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 6px;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+
+  /* 주의사항 */
+  .notice-box {
+    max-width: 1100px;
+    margin: 0 auto 60px;
+    padding: 0 40px;
+  }
+
+  .notice-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .notice-card {
+    background: white;
+    border-radius: 16px;
+    padding: 22px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+    border-left: 6px solid;
+  }
+
+  .nc-1 { border-color: var(--green); }
+  .nc-2 { border-color: var(--blue-light); }
+  .nc-3 { border-color: var(--orange); }
+
+  .notice-card h4 {
+    font-size: 17px;
+    font-weight: 900;
+    margin-bottom: 10px;
+  }
+
+  .notice-card ul {
+    list-style: none;
+    font-size: 14px;
+    color: #444;
+    line-height: 2;
+  }
+
+  .notice-card ul li::before {
+    content: '✓ ';
+    color: var(--green);
+    font-weight: 700;
+  }
+
+  /* 푸터 */
+  .footer {
+    background: var(--dark);
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 30px;
+    font-size: 15px;
+  }
+
+  .footer strong {
+    color: var(--green-light);
+  }
+
+  @media print {
+    body { font-size: 14px; }
+    .hero h1 { font-size: 36px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- 헤더 -->
+<div class="hero">
+  <div class="badge">📋 프로젝트 전체 가이드</div>
+  <h1>사회·과학 디지털 융합<br><span>E.C.O. 프로젝트</span></h1>
+  <p>역사 사료와 환경 데이터를 함께 분석하여<br>안산의 환경문제 해결 제안서를 직접 시청에 제출합니다</p>
+</div>
+
+<!-- ECO 모형 소개 -->
+<div class="eco-intro">
+  <div class="eco-card e">
+    <div class="letter">E</div>
+    <div class="label">EXPLORE · 탐구</div>
+    <h3>탐색하기</h3>
+    <p>역사 사료로 환경파괴의<br><strong>원인</strong>을 파헤치고<br>과학 데이터로 <strong>현황</strong>을 확인</p>
+  </div>
+
+  <div class="arrow-between">→</div>
+
+  <div class="eco-card c">
+    <div class="letter">C</div>
+    <div class="label">CONNECT · 연결</div>
+    <h3>연결하기</h3>
+    <p>역사(원인)와 과학(현황)을<br>교차 분석하여<br><strong>인과 구조</strong> 완성</p>
+  </div>
+
+  <div class="arrow-between">→</div>
+
+  <div class="eco-card o">
+    <div class="letter">O</div>
+    <div class="label">OUTPUT · 실천</div>
+    <h3>실천하기</h3>
+    <p>SDGs 기반 해결방안 설계 후<br><strong>안산시청에 실제 제출</strong><br>진짜 시민으로 행동</p>
+  </div>
+</div>
+
+<!-- 전체 흐름도 -->
+<div class="section">
+  <div class="section-title">
+    <div class="num">1</div>
+    전체 수업 흐름 — 10차시 한눈에 보기
+  </div>
+
+  <div class="flow-container">
+
+    <!-- E단계 -->
+    <div class="flow-row">
+      <div class="flow-stage-label stage-e">E<br>탐구</div>
+      <div class="flow-cards">
+
+        <div class="flow-card e-color">
+          <div class="chi">1차시</div>
+          <span class="subject-tag tag-society">사회문제탐구</span>
+          <h4>환경파괴는<br>언제부터 시작됐을까?</h4>
+          <ul class="tasks">
+            <li>경제개발 전후 사진 비교</li>
+            <li>빅카인즈로 1960~70년대 신문 검색</li>
+            <li>사료 어조(긍정/부정) 분석</li>
+            <li>중화학공업 그래프 분석</li>
+          </ul>
+          <div class="padlet-badge">📌 패들렛 업로드: 역사 사건 연표 + 사료 어조 분석표</div>
+        </div>
+
+        <div class="flow-card e-color">
+          <div class="chi">2차시</div>
+          <span class="subject-tag tag-science">생태와환경</span>
+          <h4>데이터에<br>역사가 남아있다</h4>
+          <ul class="tasks">
+            <li>공공데이터포털·NASA에서 CO₂·기온 데이터 수집</li>
+            <li>구글 시트로 그래프 만들기</li>
+            <li>1차시 역사 사건과 변곡점 매칭</li>
+          </ul>
+          <div class="padlet-badge">📌 패들렛 업로드: 역사-데이터 매칭표 + 그래프 캡처</div>
+        </div>
+
+        <div class="flow-card e-color">
+          <div class="chi">3차시</div>
+          <span class="subject-tag tag-society">사회문제탐구</span>
+          <h4>안산 반월공단의<br>역사</h4>
+          <ul class="tasks">
+            <li>반월공단 설립 배경 조사</li>
+            <li>빅카인즈로 '안산 환경' 시계열 분석</li>
+            <li>안산 환경 역사 연대기 작성</li>
+            <li>4차시 검증 시점 3개 선정</li>
+          </ul>
+          <div class="padlet-badge">📌 패들렛 업로드: 안산 환경 역사 연대기</div>
+        </div>
+
+        <div class="flow-card e-color">
+          <div class="chi">4차시</div>
+          <span class="subject-tag tag-science">생태와환경</span>
+          <h4>안산의<br>환경 성적표</h4>
+          <ul class="tasks">
+            <li>에어코리아에서 PM2.5·SO₂ 수집</li>
+            <li>물환경정보시스템에서 시화호 BOD 수집</li>
+            <li>3차시 역사 사건과 데이터 교차 검증</li>
+          </ul>
+          <div class="padlet-badge">📌 패들렛 업로드: 대기·수질 데이터 차트 캡처</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- C단계 -->
+    <div class="flow-row">
+      <div class="flow-stage-label stage-c">C<br>연결</div>
+      <div class="flow-cards">
+
+        <div class="flow-card c-color" style="max-width: 100%;">
+          <div class="chi">5차시</div>
+          <span class="subject-tag tag-both">🤝 사회문제탐구 + 생태와환경 공동수업</span>
+          <h4>역사 탐정 + 과학 분석관이 만나다 — 안산의 환경문제, 무엇이 문제인가?</h4>
+          <ul class="tasks" style="columns: 2; gap: 20px;">
+            <li>모둠 내 역할 분담 (역사파트·과학파트)</li>
+            <li>역사 연대기 ↔ 데이터 차트 나란히 놓고 비교</li>
+            <li>인과 구조 도출: "왜 이 시기에 데이터가 변했는가?"</li>
+            <li>구글 독스로 통합 진단 보고서 공동 작성</li>
+          </ul>
+          <div class="padlet-badge">📌 패들렛 업로드: 안산 환경문제 통합 진단 보고서 완성본</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- O단계 -->
+    <div class="flow-row">
+      <div class="flow-stage-label stage-o">O<br>실천</div>
+      <div class="flow-cards">
+
+        <div class="flow-card o-color">
+          <div class="chi">6차시</div>
+          <span class="subject-tag tag-science">생태와환경</span>
+          <h4>SDGs로<br>해결책 찾기</h4>
+          <ul class="tasks">
+            <li>SDGs 17개 목표 검토</li>
+            <li>안산 문제에 맞는 SDG 목표 선정</li>
+            <li>국내외 성공사례 조사</li>
+            <li>캔바로 SDG 인포그래픽 제작</li>
+          </ul>
+          <div class="padlet-badge">📌 패들렛 업로드: SDG 선정 근거표 + 인포그래픽</div>
+        </div>
+
+        <div class="flow-card o-color">
+          <div class="chi">7차시</div>
+          <span class="subject-tag tag-society">사회문제탐구</span>
+          <h4>역사가 알려주는<br>성공의 조건</h4>
+          <ul class="tasks">
+            <li>해외 환경 성공사례 역사 분석</li>
+            <li>안산에 적용 가능한 교훈 도출</li>
+            <li>제안서 ①·④파트 초안 작성</li>
+            <li>뤼튼으로 논리 검토</li>
+          </ul>
+          <div class="padlet-badge">📌 패들렛 업로드: 제안서 ①④파트 초안</div>
+        </div>
+
+        <div class="flow-card o-color">
+          <div class="chi">8차시</div>
+          <span class="subject-tag tag-both">🤝 공동수업</span>
+          <h4>제안서<br>최종 완성</h4>
+          <ul class="tasks">
+            <li>5파트 제안서 구글 독스 공동 편집</li>
+            <li>타 학교 우수사례 참고하여 보완</li>
+            <li>캔바로 디자인 레이아웃 완성</li>
+          </ul>
+          <div class="padlet-badge">📌 패들렛 업로드: 최종 제안서 PDF 캡처</div>
+        </div>
+
+        <div class="flow-card o-color">
+          <div class="chi">9~10차시</div>
+          <span class="subject-tag tag-both">🏁 발표·제출</span>
+          <h4>발표하고<br>시청에 제출!</h4>
+          <ul class="tasks">
+            <li>모둠별 5분 발표 + 동료 평가</li>
+            <li>최종 수정</li>
+            <li>안산시청 온라인 민원 실제 제출</li>
+            <li>접수번호 캡처 → 패들렛 업로드</li>
+          </ul>
+          <div class="padlet-badge">📌 패들렛 업로드: 시청 접수 확인 화면 캡처</div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 패들렛 업로드 총정리 -->
+<div class="padlet-section">
+  <div class="padlet-title">📌 패들렛 업로드 체크리스트 — 총 8가지</div>
+  <div class="padlet-grid">
+    <div class="padlet-item">
+      <div class="padlet-icon">1️⃣</div>
+      <div class="padlet-item-text">
+        <strong>역사 사건 연표</strong>
+        <span>산업화 시기 주요 사건 + 사료 어조 분석표 캡처</span>
+      </div>
+    </div>
+    <div class="padlet-item">
+      <div class="padlet-icon">2️⃣</div>
+      <div class="padlet-item-text">
+        <strong>역사-데이터 매칭표</strong>
+        <span>역사 사건과 CO₂·기온 변곡점을 연결한 표 캡처</span>
+      </div>
+    </div>
+    <div class="padlet-item">
+      <div class="padlet-icon">3️⃣</div>
+      <div class="padlet-item-text">
+        <strong>안산 환경 역사 연대기</strong>
+        <span>반월공단~시화호~현재까지 연대기 캡처</span>
+      </div>
+    </div>
+    <div class="padlet-item">
+      <div class="padlet-icon">4️⃣</div>
+      <div class="padlet-item-text">
+        <strong>대기·수질 데이터 차트</strong>
+        <span>에어코리아·시화호 BOD 그래프 캡처</span>
+      </div>
+    </div>
+    <div class="padlet-item">
+      <div class="padlet-icon">5️⃣</div>
+      <div class="padlet-item-text">
+        <strong>통합 진단 보고서</strong>
+        <span>역사+과학 교차 분석 완성 보고서 캡처</span>
+      </div>
+    </div>
+    <div class="padlet-item">
+      <div class="padlet-icon">6️⃣</div>
+      <div class="padlet-item-text">
+        <strong>SDG 선정 인포그래픽</strong>
+        <span>선정한 SDG 목표와 근거 캔바 캡처</span>
+      </div>
+    </div>
+    <div class="padlet-item">
+      <div class="padlet-icon">7️⃣</div>
+      <div class="padlet-item-text">
+        <strong>최종 제안서</strong>
+        <span>5파트 완성 제안서 PDF 전체 캡처</span>
+      </div>
+    </div>
+    <div class="padlet-item">
+      <div class="padlet-icon">8️⃣</div>
+      <div class="padlet-item-text">
+        <strong>시청 접수 확인</strong>
+        <span>안산시청 온라인 민원 접수번호 화면 캡처</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 최종 제안서 구조 -->
+<div class="proposal-section">
+  <div class="section-title">
+    <div class="num">2</div>
+    최종 제안서 구성 — 5파트
+  </div>
+  <div class="proposal-box">
+    <div class="proposal-header">
+      🏛️ 안산 환경문제 해결 시민 제안서 — 우리가 시청에 보낼 것
+    </div>
+    <div class="proposal-body">
+      <div class="proposal-part">
+        <div class="part-num p1">①</div>
+        <div class="part-content">
+          <strong>안산 환경의 역사적 배경 <span class="part-tag tag-society">사회문제탐구</span></strong>
+          <span>반월공단 설립 배경 · 산업화와 환경파괴의 역사적 흐름 · 사료로 본 당시 환경 인식 변화</span>
+        </div>
+      </div>
+      <div class="proposal-part">
+        <div class="part-num p2">②</div>
+        <div class="part-content">
+          <strong>현재 안산 환경 현황 <span class="part-tag tag-science">생태와환경</span></strong>
+          <span>PM2.5·SO₂·BOD 데이터 분석 결과 · 그래프와 수치로 현재 상태 제시</span>
+        </div>
+      </div>
+      <div class="proposal-part">
+        <div class="part-num p3">③</div>
+        <div class="part-content">
+          <strong>SDG 기반 해결 목표 <span class="part-tag tag-science">생태와환경</span></strong>
+          <span>선택한 SDG 목표와 근거 · 국내외 성공사례 (시화호 조력발전소 · 독일 루르 공업지대)</span>
+        </div>
+      </div>
+      <div class="proposal-part">
+        <div class="part-num p4">④</div>
+        <div class="part-content">
+          <strong>역사적 성공 사례 근거 <span class="part-tag tag-society">사회문제탐구</span></strong>
+          <span>과거 환경문제 해결 성공 조건 · 런던 스모그·루르 공업지대 사례 교훈</span>
+        </div>
+      </div>
+      <div class="proposal-part">
+        <div class="part-num p5">⑤</div>
+        <div class="part-content">
+          <strong>우리의 제안 <span class="part-tag tag-both">통합</span></strong>
+          <span>역사+과학+SDGs를 모두 반영한 구체적 실행방안 · 기대 효과</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 주의사항 -->
+<div class="notice-box">
+  <div class="section-title">
+    <div class="num">3</div>
+    꼭 기억할 것 3가지
+  </div>
+  <div class="notice-grid">
+    <div class="notice-card nc-1">
+      <h4>📸 캡처는 그때그때!</h4>
+      <ul>
+        <li>활동 직후 바로 캡처</li>
+        <li>나중에 하려면 자료가 사라짐</li>
+        <li>패들렛에 과하다 싶을 만큼 올리기</li>
+        <li>모둠별 공동 업로드 필수</li>
+      </ul>
+    </div>
+    <div class="notice-card nc-2">
+      <h4>📎 출처를 반드시 표기!</h4>
+      <ul>
+        <li>빅카인즈: 기사 날짜·제목 기록</li>
+        <li>에어코리아: 접속일 기록</li>
+        <li>AI 활용 시 "AI 검토 후 수정" 명시</li>
+        <li>사진·그림 저작권 확인</li>
+      </ul>
+    </div>
+    <div class="notice-card nc-3">
+      <h4>🏛️ 실제로 제출한다!</h4>
+      <ul>
+        <li>우리 제안서는 실제 시청에 감</li>
+        <li>진짜 시민으로서 작성할 것</li>
+        <li>접수번호 꼭 캡처해서 보관</li>
+        <li>답변이 올 수도 있음!</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- 푸터 -->
+<div class="footer">
+  <strong>사회·과학 디지털 융합 E.C.O. 프로젝트</strong><br>
+  Explore · Connect · Output — 탐구하고, 연결하고, 행동하라
+</div>
+
+</body>
+</html>
